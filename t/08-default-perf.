@@ -1,0 +1,23 @@
+use strict;
+use warnings;
+use Test::More;
+use Time::HiRes qw(time);
+use HiatalaMrk qw(:all);
+
+SKIP: {
+    skip 'XS backend required', 3 unless backend() eq 'xs';
+
+    my $def = DEFAULT_CONFIG();
+    my $t0  = time;
+    hiatala_mrk_hash({ password => 'benchmark' });
+    my $dt = time - $t0;
+
+    diag sprintf("default hash (m=%d, t=%d): %.3fs",
+        $def->{memory}, $def->{passes}, $dt);
+
+    cmp_ok($dt, '<', 2.0, 'default hash completes under 2s with XS');
+    cmp_ok($dt, '>', 0.2, 'default hash takes at least 200ms (memory is used)');
+    is($def->{memory}, 16384, 'default memory is 16 MiB');
+}
+
+done_testing;

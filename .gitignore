@@ -1,0 +1,47 @@
+# Build artifacts
+blib/
+_build/
+Build
+Build.bat
+Makefile
+Makefile.old
+HiatalaMrk.c
+HiatalaMrk.xsc
+HiatalaMrk.bs
+*.o
+*.so
+*.dll
+*.dylib
+*.bundle
+pm_to_blib
+
+# Distribution artifacts
+HiatalaMrk-*.tar.gz
+*.tar.gz
+*.zip
+
+# Carton
+local/
+cpanfile.snapshot.lock
+
+# Editor and OS noise
+*.swp
+*.swo
+*~
+.DS_Store
+.idea/
+.vscode/
+*.bak
+
+# Test and coverage output
+*.out
+cover_db/
+nytprof.out
+nytprof/
+
+# Perl critic and tidy
+.perlcritic
+.perltidyrc.local
+
+MYMETA.json
+MYMETA.yml
